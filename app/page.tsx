@@ -3,18 +3,26 @@ import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <div className="bg-[url('/images/apartment-image.jpg')] bg-cover bg-center bg-no-repeat grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <h1 style={{ fontFamily: "Winky Rough Italic", fontSize: "80px" }}>
+    <div
+      className="bg-cover bg-center bg-no-repeat grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]"
+      style={{ backgroundImage: "url('/images/apartment-image-2.jpg')" }}
+    >
+      <main className="flex flex-col gap-[32px] row-start-2 items-start w-full sm:w-full px-4">
+        <h1 style={{ fontFamily: "Winky Rough Italic", fontSize: "50px" }}>
           Welcome to our homepage
         </h1>
 
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="lists">Get started by editing .</li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+        <p>
+          Our managent base on the <em>STRATA SCHEMES MANAGEMENT ACT</em>
+        </p>
+        <p>We are here to help you with your property management needs.</p>
+        <a
+          href="https://classic.austlii.edu.au/au/legis/nsw/consol_act/ssma2015242/"
+          target="blank"
+          className="text-xl font-bold text-primary dark:text-white hover:text-secondary hover:underline mt-4"
+        >
+          What is strata schemes management act?
+        </a>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
