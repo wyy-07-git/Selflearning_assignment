@@ -34,3 +34,9 @@ body {
   font-style: normal;
 }
 
+.container {
+  background-image: url('/public/images/apartment\ image.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
