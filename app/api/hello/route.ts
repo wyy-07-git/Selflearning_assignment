@@ -1,10 +1,15 @@
-import { NextResponse } from 'next/server'
 
-export async function GET() {
-  return NextResponse.json({ message: 'Hello from App Router API!' })
-}
+import { NextResponse } from 'next/server'
+export const runtime = 'edge';
 
 export async function POST(req: Request) {
-    const data = await req.json()
-    return NextResponse.json({ received: data })
-  }
+    const formdata = await req.formData();
+    const email = formdata.get('email');
+
+    if(!email) {
+        return NextResponse.json({ error: 'Email is required' }, { status: 400 });
+    }
+
+    return NextResponse.json({ message: 'Email received', email }, { status: 200 });
+   
+}
