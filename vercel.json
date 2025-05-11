@@ -1,10 +1,5 @@
 {
     "clean urls": false,
-    "redirects":[
-        {
-            "source": "/api/hello",
-            "destination": "/report.html",
-            "statusCode": 301
-        }
-    ]
+    "version": 2,
+    "public": true
 }
