@@ -1,5 +1,5 @@
 {
-    "clean urls": false,
+    "clean urls": true,
     "version": 2,
     "public": true
 }
