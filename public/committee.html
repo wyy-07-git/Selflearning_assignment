@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Committee Application</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      button {
+        background: #2c3e50;
+        color: white;
+        border: none;
+        padding: 12px;
+        width: 100%;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .required:after {
+        content: " *";
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Committee Application</h1>
+    <form id="committeeForm">
+      <div class="form-group">
+        <label for="name" class="required">Full Name</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div class="form-group">
+        <label for="email" class="required">Email</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div class="form-group">
+        <label for="committee" class="required">Working experience</label>
+        <select id="committee" name="committee" required>
+          <option value="">Select one...</option>
+          <option value="none">None</option>
+          <option value=">1">More than 1 year</option>
+          <option value=">5">More than 5 years</option>
+        </select>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      document
+        .getElementById("committeeForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const formData = new FormData(e.target);
+          const submitBtn = e.target.querySelector("button");
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Submitting...";
+
+          try {
+            const response = await fetch("/api/submit", {
+              method: "POST",
+              body: formData,
+            });
+
+            if (response.ok) {
+              alert("Application submitted successfully!");
+              e.target.reset();
+            } else {
+              throw new Error("Submission failed");
+            }
+          } catch (error) {
+            alert("Error submitting application. Please try again.");
+            console.error(error);
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Submit";
+          }
+        });
+    </script>
+  </body>
+</html>
