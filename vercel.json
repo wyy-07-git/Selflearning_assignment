@@ -8,6 +8,6 @@
     }
   },
   "routes": [
-    { "src": "/maintenance", "dest": "/api/index.php" }
+    { "src": "/maintenance", "dest": "/api/php_file/index.php" }
   ]
 }
