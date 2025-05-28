@@ -3,7 +3,7 @@
     "version": 2,
     "public": true,
     "functions": {
-    "php-api/index.php": {
+    "/api/php_file/index.php": {
       "runtime": "vercel-php@0.5.1"
     }
   },
