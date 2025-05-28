@@ -12,7 +12,7 @@
   "next": "15.2.4",
   "react": "^19.0.0",
   "react-dom": "^19.0.0",
-  "vercel-php": "0.5.2"
+  "vercel-php": "0.7.3"
 },
 "devDependencies": {
   "@tailwindcss/postcss": "^4",

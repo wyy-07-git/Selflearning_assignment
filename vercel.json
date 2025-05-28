@@ -4,7 +4,7 @@
     "public": true,
     "functions": {
     "api/maintenance.php": {
-      "runtime": "vercel-php@0.5.2"
+      "runtime": "vercel-php@0.7.3"
     }
   },
   "routes": [
