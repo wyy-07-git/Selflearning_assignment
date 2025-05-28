@@ -3,11 +3,11 @@
     "version": 2,
     "public": true,
     "functions": {
-    "app/api/maintenance.php": {
+    "/api/maintenance.php": {
       "runtime": "vercel-php@0.5.1"
     }
   },
   "routes": [
-    { "src": "/maintenance", "dest": "app/api/maintenance.php" }
+    { "src": "/maintenance", "dest": "/api/maintenance.php" }
   ]
 }
