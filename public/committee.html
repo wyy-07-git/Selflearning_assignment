@@ -44,7 +44,7 @@
   </head>
   <body>
     <h1>Committee Application</h1>
-    <form id="committeeForm">
+    <form id="committeeForm" method="POST">
       <div class="form-group">
         <label for="name" class="required">Full Name</label>
         <input type="text" id="name" name="name" required />
@@ -68,32 +68,26 @@
     <script>
       document
         .getElementById("committeeForm")
-        .addEventListener("submit", async (e) => {
+        .addEventListener("submit", async function (e) {
           e.preventDefault();
 
-          const formData = new FormData(e.target);
-          const submitBtn = e.target.querySelector("button");
-          submitBtn.disabled = true;
-          submitBtn.textContent = "Submitting...";
+          const fullname = document.querySelector('input[name="name"]').value;
+          const email = document.querySelector('input[name="email"]').value;
+          const working_experience = document.querySelector(
+            'select[name="committee"]'
+          ).value;
 
-          try {
-            const response = await fetch("/api/submit", {
-              method: "POST",
-              body: formData,
-            });
+          const res = await fetch("/api/application", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ fullname, email, working_experience }),
+          });
 
-            if (response.ok) {
-              alert("Application submitted successfully!");
-              e.target.reset();
-            } else {
-              throw new Error("Submission failed");
-            }
-          } catch (error) {
-            alert("Error submitting application. Please try again.");
-            console.error(error);
-          } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = "Submit";
+          if (res.ok) {
+            alert("✅ Feedback saved to database!");
+            e.target.reset();
+          } else {
+            alert("❌ Failed to save feedback.");
           }
         });
     </script>

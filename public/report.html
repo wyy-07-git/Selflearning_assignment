@@ -87,7 +87,7 @@
   <body>
     <h1>We valued your feedback</h1>
     <div class = 'feedback_container'>
-    <form action="/api/hello" method="POST">
+    <form id = 'feedback-form' method = 'POST'>
       <div class="email">
         <label for="email">Your Email</label>
         <input
@@ -109,5 +109,27 @@
     </div>
       <button type="submit">Submit Feedback</button>
     </form>
+    <script>
+      document.getElementById('feedback-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+    
+        const email = document.querySelector('input[name="email"]').value;
+        const feedback = document.querySelector('textarea[name="feedback"]').value;
+    
+        const res = await fetch('/api/feedback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, feedback })
+        });
+    
+        if (res.ok) {
+          alert("✅ Feedback saved to database!");
+          e.target.reset();
+        } else {
+          alert("❌ Failed to save feedback." );
+        }
+      });
+    </script>
+    
   </body>
 </html>
