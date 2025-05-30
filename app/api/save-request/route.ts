@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     const { unit, issue } = await req.json();
 
     const { error } = await supabase
-      .from('unit_maintenance')
+      .from('unit_maintaence')
       .insert([{ unit, issue }]);
 
     if (error) {
